@@ -9,7 +9,9 @@ dependencies = [
     "tracklab",
     "easyocr==1.7.1",
     "soccernet==0.1.55",
-    "torch==1.13.1",
+    "torch==2.0.1+cu118",
+    "torchvision==0.15.2+cu118",
+    "torchaudio==2.0.2+cu118",
     "prtreid @ git+https://github.com/VlSomers/prtreid",
     "mmocr==1.0.1",
     "mmdet~=3.1.0",
@@ -18,8 +20,8 @@ dependencies = [
     "lightning==2.0.9",
     "tracklab_calibration",
     "numpy<2.0",
+    "torchmetrics==0.10.3",
 ]
-
 [project.entry-points.tracklab_plugin]
 sn_gamestate = "sn_gamestate.config_finder:ConfigFinder"
 
@@ -36,5 +38,20 @@ include = ["sn_gamestate*"]
 [project.optional-dependencies]
 dev = ["ipykernel==6.29.4"]
 
+[tool.uv]
+environments = ["sys_platform == 'win32'"]
+
 [tool.uv.sources]
 tracklab-calibration = { path = "plugins/calibration", editable = true }
+torch = { index = "pytorch" }
+torchvision = { index = "pytorch" }
+torchaudio = { index = "pytorch" }
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
+[[tool.uv.index]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu118"
