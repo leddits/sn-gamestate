@@ -3,13 +3,17 @@ name = "sn-gamestate"
 version = "0.2.0"
 description = "A Baseline and Framework for the SoccerNet Game State Reconstruction Challenge"
 readme = "README.md"
-requires-python = ">=3.9,<3.10"
+requires-python = ">=3.10,<3.11"
 
 dependencies = [
     "tracklab",
     "easyocr==1.7.1",
     "soccernet==0.1.55",
-    "torch==1.13.1",
+    # PyTorch for NVIDIA Jetson AGX Orin - install via NVIDIA's wheel (JetPack 6.2.1)
+    "torch==2.0.0; platform_machine != 'aarch64'",
+    "torchvision==0.15.0; platform_machine != 'aarch64'", 
+    "torchaudio==2.0.0; platform_machine != 'aarch64'",
+    # NVIDIA PyTorch for AGX Orin will be installed separately via install script
     "prtreid @ git+https://github.com/VlSomers/prtreid",
     "mmocr==1.0.1",
     "mmdet~=3.1.0",
