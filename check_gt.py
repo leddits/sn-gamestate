@@ -5,7 +5,7 @@ import pickle
 import pandas as pd
 
 def analyze_ground_truth():
-    """Ground Truth 데이터를 분석합니다."""
+    """Ground Truth vs Predictions 데이터를 분석합니다."""
     
     pklz_path = "C:/Projects/pythonProjects/sn-gamestate/outputs/sn-gamestate/2025-09-15/22-10-55/states/sn-gamestate.pklz"
     
@@ -28,7 +28,7 @@ def analyze_ground_truth():
         print(f"📊 Image 데이터 타입: {type(image_data)}")
         
         if isinstance(image_data, pd.DataFrame):
-            print(f"� Image 데이터 크기: {image_data.shape}")
+            print(f"📊 Image 데이터 크기: {image_data.shape}")
             print(f"📋 Image 데이터 컬럼: {list(image_data.columns)}")
             
             # Ground Truth 분석
@@ -66,27 +66,3 @@ def analyze_ground_truth():
 
 if __name__ == "__main__":
     analyze_ground_truth()
-            print(f"  - 총 트랙 수: {len(tracker_state.tracks)}")
-            
-            first_track_id = list(tracker_state.tracks.keys())[0]
-            first_track = tracker_state.tracks[first_track_id]
-            print(f"  - 첫 번째 트랙 ({first_track_id}): {type(first_track)}")
-            if hasattr(first_track, '__dict__'):
-                print(f"  - 트랙 속성들: {list(first_track.__dict__.keys())}")
-        
-        return tracker_state
-        
-    except Exception as e:
-        print(f"❌ 에러: {e}")
-        return None
-
-# 최신 결과 파일 찾기
-outputs_dir = Path("outputs/sn-gamestate")
-latest_dirs = sorted(outputs_dir.glob("*/*/states/sn-gamestate.pklz"))
-
-if latest_dirs:
-    latest_file = latest_dirs[-1]
-    print(f"🔍 최신 결과 파일: {latest_file}")
-    tracker_state = inspect_tracker_state(latest_file)
-else:
-    print("❌ 결과 파일을 찾을 수 없습니다.")

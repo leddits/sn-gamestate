@@ -1,5 +1,5 @@
 _target_: sn_gamestate.calibration.nbjw_calib.NBJW_Calib
 image_width: 1920
 image_height: 1080
-batch_size: 256
+batch_size: 1  # RTX 4060에 맞게 대폭 감소
 use_prev_homography: True

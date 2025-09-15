@@ -51,13 +51,13 @@ use_wandb: False
 use_rich: True
 
 modules: # Allows module-specific batch_size and other configuration
-  bbox_detector: {batch_size: 8}     # RTX 4060 8GB에 적합한 크기
-  pose_bottomup: {batch_size: 8}     # 증가 (충분한 메모리)
-  reid: {batch_size: 32}             # 4배 증가 (성능 향상)
-  track: {batch_size: 32}            # reid와 동일하게 증가
-  pitch: {batch_size: 1}             # 유지 (순차 처리 적합)
-  calibration: {batch_size: 1}       # 유지 (순차 처리 적합)
-  jersey_number_detect: {batch_size: 6}  # 적당히 증가
+  bbox_detector: {batch_size: 4}     # 메모리 절약을 위해 감소
+  pose_bottomup: {batch_size: 4}     # 감소
+  reid: {batch_size: 16}             # 절반으로 감소 
+  track: {batch_size: 16}            # reid와 동일하게 감소
+  pitch: {batch_size: 1}             # 유지 (문제 모듈과 관련)
+  calibration: {batch_size: 1}       # 유지 (문제 모듈과 관련)
+  jersey_number_detect: {batch_size: 4}  # 감소
 
 # Flags
 test_tracking: True
@@ -67,7 +67,7 @@ print_config: False
 # Dataset
 dataset:
   nvid: 1  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
-  nframes: 100 # RTX 4060에 적합한 프레임 수 (약 10초 분량)
+  nframes: 2 # 매우 짧게 설정해서 빠른 테스트
   eval_set: "valid"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
   dataset_path: ${data_dir}/SoccerNetGS  # The SoccerNet game state dataset is located under the data path (defined above) in the 'SoccerNetGS' folder
   vids_dict: # Use one key per split (valid, test, etc)

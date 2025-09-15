@@ -21,6 +21,8 @@ dependencies = [
     "tracklab_calibration",
     "numpy<2.0",
     "torchmetrics==0.10.3",
+    "pyside6>=6.9.2",
+    "psutil>=6.1.1",
 ]
 [project.entry-points.tracklab_plugin]
 sn_gamestate = "sn_gamestate.config_finder:ConfigFinder"

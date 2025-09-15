@@ -16,6 +16,8 @@ visualizers:
   # - Radar: Radar
   frame_counter:
     _target_: tracklab.visualization.FrameCount
+  detections:
+    _target_: tracklab.visualization.FullDetection  # 등번호 표시를 위해 FullDetection 사용
   pitch:
     _target_: sn_gamestate.visualization.Pitch
   players:
@@ -31,6 +33,6 @@ colors:
   # - team: A color based on the assigned team (left or right - can be modified in colors_gs file).
   # - track_id: A color based on the tracking ID (for prediction or ground_truth only).
   default:
-    no_id: null  # Color setting for objects with no ID (null means no display).
-    prediction: "team"  # Color setting for tracked predictions, based on team.
-    ground_truth: null  # Color setting for ground truth, specified as an RGB value.
+    no_id: [255, 255, 255]  # 흰색 (팀 미분류)
+    prediction: "team"  # 팀 기반 색상 사용
+    ground_truth: "team"  # GT도 팀 기반 색상 사용

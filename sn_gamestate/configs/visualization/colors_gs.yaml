@@ -6,12 +6,12 @@ colors:
   # distinct from one another when using "track_id" or colormap name.
   cmap: 22
   team:  # colors can be selected by RGB or null
-    no_team: null
+    no_team: [255, 255, 255]  # 흰색 (팀 미분류)
     prediction:
-      left: [ 0, 0, 255 ]
-      right: [ 255, 0, 0 ]
-      referee: [ 238, 210, 2 ]
+      left: [ 0, 100, 255 ]    # 밝은 파란색 (왼쪽 팀)
+      right: [ 255, 50, 50 ]   # 밝은 빨간색 (오른쪽 팀)
+      referee: [ 255, 255, 0 ] # 밝은 노란색 (심판)
     ground_truth:
-      left: [ 0, 255, 0 ]
-      right: [ 0, 255, 0 ]
-      referee: [ 255, 255, 0 ]
+      left: [ 0, 100, 255 ]    # 밝은 파란색 (GT 왼쪽)
+      right: [ 255, 50, 50 ]   # 밝은 빨간색 (GT 오른쪽)
+      referee: [ 255, 255, 0 ] # 밝은 노란색 (GT 심판)
