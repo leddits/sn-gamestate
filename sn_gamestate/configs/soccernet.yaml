@@ -45,8 +45,8 @@ home_dir: "${oc.env:HOME}"
 data_dir: "${project_dir}/data"
 model_dir: "${project_dir}/pretrained_models"
 
-# Machine configuration
-num_cores: 4
+# Machine configuration (16코어 CPU 최적화)
+num_cores: 8  # 16코어 중 절반 사용 (GPU와 균형)
 use_wandb: False
 use_rich: True
 
@@ -67,7 +67,7 @@ print_config: False
 # Dataset
 dataset:
   nvid: 1  # For a quick first inference, only the first video is processed. Use "-1" to process all the videos.
-  nframes: 5 # For testing on only a few frames, set to a positive number. Will disable evaluation !
+  nframes: 100 # RTX 4060에 적합한 프레임 수 (약 10초 분량)
   eval_set: "valid"  # Tracking is performed on the SoccerNet validation set. Choose from {"train", "valid", "test", "challenge"}.
   dataset_path: ${data_dir}/SoccerNetGS  # The SoccerNet game state dataset is located under the data path (defined above) in the 'SoccerNetGS' folder
   vids_dict: # Use one key per split (valid, test, etc)
