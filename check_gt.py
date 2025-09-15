@@ -7,7 +7,7 @@ import pandas as pd
 def analyze_ground_truth():
     """Ground Truth vs Predictions 데이터를 분석합니다."""
     
-    pklz_path = "C:/Projects/pythonProjects/sn-gamestate/outputs/sn-gamestate/2025-09-15/22-10-55/states/sn-gamestate.pklz"
+    pklz_path = "C:/Projects/pythonProjects/sn-gamestate/outputs/sn-gamestate/2025-09-15/23-16-18/states/sn-gamestate.pklz"
     
     print("🔍 Ground Truth vs Predictions 분석:")
     
@@ -54,10 +54,33 @@ def analyze_ground_truth():
             if sample_cols:
                 print(image_data[sample_cols].head(3))
         
-        print(f"\n🔄 비교 요약:")
+        print(f"\n� 첫 5개 행 상세:")
+        sample_cols = ['track_id', 'team', 'role', 'bbox_pitch', 'jersey_number']
+        print(df[sample_cols].head(5))
+        
+        # bbox_pitch 상세 확인
+        bbox_pitch_sample = df['bbox_pitch'].head(5)
+        print(f"\nbbox_pitch 샘플:")
+        for i, bbox in enumerate(bbox_pitch_sample):
+            print(f"  {i}: {type(bbox)} = {bbox}")
+        
+        # 각 컬럼별 통계
+        print(f"\n📊 컬럼별 통계:")
+        for col in ['team', 'role', 'jersey_number', 'bbox_pitch']:
+            if col in df.columns:
+                valid_count = df[col].notna().sum()
+                unique_count = len(df[col].unique())
+                print(f"{col}: {valid_count}/{len(df)} 유효, {unique_count}개 유니크값")
+                if valid_count > 0:
+                    unique_vals = df[col].dropna().unique()[:5]
+                    print(f"  샘플값: {unique_vals}")
+                    
+        print(f"\n�🔄 비교 요약:")
         print(f"Predictions 저지번호: {pred_df['jersey_number'].notna().sum()}")
         if isinstance(image_data, pd.DataFrame) and 'jersey_number' in image_data.columns:
             print(f"Ground Truth 저지번호: {image_data['jersey_number'].notna().sum()}")
+        else:
+            print("Ground Truth: Image 데이터에 저지번호 없음")
             
     except Exception as e:
         print(f"❌ 에러: {e}")

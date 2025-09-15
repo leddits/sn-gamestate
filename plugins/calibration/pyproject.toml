@@ -5,7 +5,7 @@ description = ""
 authors = [
     {name="Victor Joos", email="victor.joos@uclouvain.be"}
 ]
-requires-python = ">=3.9,<3.10"
+requires-python = ">=3.9,<=3.11"
 dependencies = [
     "kornia==0.6.3",
     "lsq-ellipse>=2.2.1"

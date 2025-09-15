@@ -2136,7 +2136,7 @@ requires-dist = [
     { name = "soccernet", specifier = "==0.1.55" },
     { name = "torch", specifier = "==2.0.1+cu118", index = "https://download.pytorch.org/whl/cu118" },
     { name = "torchaudio", specifier = "==2.0.2+cu118", index = "https://download.pytorch.org/whl/cu118" },
-    { name = "torchmetrics", specifier = "==0.10.3" },
+    { name = "torchmetrics" },
     { name = "torchreid", git = "https://github.com/VlSomers/bpbreid" },
     { name = "torchvision", specifier = "==0.15.2+cu118", index = "https://download.pytorch.org/whl/cu118" },
     { name = "tracklab" },

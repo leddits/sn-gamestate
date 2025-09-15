@@ -20,7 +20,7 @@ dependencies = [
     "lightning==2.0.9",
     "tracklab_calibration",
     "numpy<2.0",
-    "torchmetrics==0.10.3",
+    "torchmetrics",
     "pyside6>=6.9.2",
     "psutil>=6.1.1",
 ]
